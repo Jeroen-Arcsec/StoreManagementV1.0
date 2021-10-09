@@ -1,0 +1,136 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} UI Tables {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+  <div class="container-fluid py-4">
+      <div class="row mt-4">
+          <div class="col-3"></div>
+        <div class="col-6 mb-xl-0 mb-4">
+          <div class="card ">
+              <div class="card-body p-3 align-middle text-center">
+                  <h5 class="text-m mb-2 text-capitalize font-weight-bolder">Overzicht Facturen</h5>
+              </div>
+          </div>
+        </div>
+          <div class="col-3"></div>
+      </div>
+
+
+
+
+
+    <div class="row mt-4">
+      <div class="col-12">
+        <div class="card mb-4 pt-3 px-1 p-1">
+          <div class="card-body px-0 pt-0 pb-2">
+            <div class="table-responsive p-0">
+              <table class="table align-items-center mb-0 hover" id="invoicetable">
+                <thead>
+                  <tr>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">Factuurnummer</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Leverancier</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">Datum</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Totale Aankoopprijs</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Totale Verkoopprijs</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Totale Marge</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Bewerk</th>
+                  </tr>
+                </thead>
+                <tbody id="BodyRows">
+                {% load app_extras %}
+                {% for invoice in invoices %}
+                    <tr>
+                        <!-- First column -->
+                        <td class="align-middle text-center">
+                            <div class="d-flex px-2 py-1">
+                                <div class="d-flex flex-column justify-content-center">
+                                    <h6 class="mb-0 text-sm">{{ "0000"|addstr:invoice.invoice_nr }}</h6>
+                                </div>
+                            </div>
+                        </td>
+                        <!-- First column -->
+                        <td>
+                            <div class="d-flex px-2 py-1">
+                                <div class="d-flex flex-column justify-content-center">
+                                    <h6 class="mb-0 text-sm">{{invoice.supplier}}</h6>
+                                </div>
+                            </div>
+                        </td>
+                        <!-- First column -->
+                        <td>
+                            <div class="d-flex px-2 py-1">
+                                <div class="d-flex flex-column justify-content-center">
+                                    <h6 class="mb-0 text-sm">{{invoice.date}}</h6>
+                                </div>
+                            </div>
+                        </td>
+                        <!-- Fourth column -->
+                        <td class="align-middle text-center">
+                            <span class="text-s font-weight-bold mb-0">€</span>
+                            <span class="text-s font-weight-bold mb-0">{{invoice.totalin}}</span>
+                        </td>
+                        <!-- Fourth column -->
+                        <td class="align-middle text-center">
+                            <span class="text-s font-weight-bold mb-0">€</span>
+                            <span class="text-s font-weight-bold mb-0">{{invoice.totalout}}</span>
+                        </td>
+                      <!-- Fourth column -->
+                      <td class="align-middle text-center">
+                        <span class="text-s font-weight-bold mb-0">{{invoice.totalmargin}}</span>
+                        <span class="text-s font-weight-bold mb-0">%</span>
+                      </td>
+
+                      <!-- Fifth column -->
+                      <td class="align-middle text-center text-sm">
+                          <form action="{{ category.get_absolute_url }}">
+                              <button class="badge badge-sm bg-gradient-success"><a href="{{ invoice.get_absolute_url }}">Bewerk</a></button>
+                          </form>
+
+                      </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+        <a class="btn bg-gradient-primary my-1 me-1" href="create_invoice">Factuur Toevoegen</a>
+    </div>
+    {% include "includes/footer.html" %}
+      </div>
+  </div>
+{% endblock content %}
+
+<!-- Specific JS goes HERE -->
+{% block javascripts %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+
+<script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+      var options = {
+        damping: '0.5'
+      }
+      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+</script>
+
+<script>
+$(document).ready(function() {
+    $('#invoicetable').DataTable( {
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Dutch.json"
+        }
+    } );
+} );
+</script>
+
+{% endblock javascripts %}

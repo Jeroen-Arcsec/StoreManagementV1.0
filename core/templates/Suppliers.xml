@@ -1,0 +1,14 @@
+<Suppliers>
+    <Supplier id="1">
+        <name>Colruyt</name>
+    </Supplier>
+    <Supplier id="2">
+        <name>Sup1</name>
+    </Supplier>
+    <Supplier id="3">
+        <name>Sup2</name>
+    </Supplier>
+    <Supplier id="4">
+        <name>Sup3</name>
+    </Supplier>
+</Suppliers>
