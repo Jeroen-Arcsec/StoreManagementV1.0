@@ -1,0 +1,22 @@
+<Categories>
+    <Category id="1">
+        <name>Groenten &amp; Fruit</name>
+        <marge>20.00</marge>
+        <image>/static/assets/img/groenten.jpg</image>
+    </Category>
+    <Category id="2">
+        <name>Tabak</name>
+        <marge>5.00</marge>
+        <image>/static/assets/img/cigarette.png</image>
+    </Category>
+    <Category id="3">
+        <name>Bakkerij</name>
+        <marge>25.00</marge>
+        <image>/static/assets/img/bread.jpg</image>
+    </Category>
+        <Category id="4">
+        <name>Zuivel</name>
+        <marge>20.00</marge>
+        <image>/static/assets/img/bread.jpg</image>
+    </Category>
+</Categories>

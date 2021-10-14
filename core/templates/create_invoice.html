@@ -1,0 +1,370 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} UI Tables {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+
+
+{% block content %}
+  <form method="POST">
+    {% csrf_token %}
+  <div class="container-fluid py-4">
+      <div class="row mt-4">
+
+        <div class="col-3 no-print">
+          <div class="card">
+            <div class="card-body p-3">
+              <div class="row">
+                <div class="col-7">
+                  <div class="numbers">
+                    <p class="text-m mb-2 text-capitalize font-weight-bolder">Categorie Toevoegen</p>
+                    <select id="categories" class="form-control border-1 ps-3">
+                    {% for category in categories %}
+                      <option id="{{ category.name }}" value="{{ category.name }}">{{ category.name }}</option>
+                    {% endfor %}
+                    </select>
+                    <button type="button" class="btn bg-gradient-primary my-1 me-1" id="add_category">Toevoegen</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-3 col-s-4">
+          <div class="card">
+            <div class="card-body p-3">
+              <div class="row">
+                <div class="col-7">
+                  <div class="numbers">
+                    <p class="text-m mb-2 text-capitalize font-weight-bolder">Selecteer Leverancier</p>
+                      {{form.supplier}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-3 col-s-4">
+          <div class="card">
+            <div class="card-body p-3">
+              <div class="row">
+                <div class="col-7">
+                  <div class="numbers">
+                    <p class="text-m mb-2 text-capitalize font-weight-bolder">Factuurnummer</p>
+                    {{ form.invoice_nr }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-3 col-xs-1">
+          <div class="card">
+            <div class="card-body p-3">
+              <div class="row">
+                <div class="col-7">
+                  <div class="numbers">
+                    <p class="text-m mb-2 text-capitalize font-weight-bolder">Datum</p>
+                    {{ form.date }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    <div class="row mt-4">
+      <div class="col-12">
+        <div class="card mb-4">
+          <div class="card-body px-0 pt-0 pb-2">
+            <div class="table-responsive p-0">
+              <table class="table align-items-center mb-0" id="invoicetable">
+                <thead>
+                  <tr>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Productcategorie</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Aankoopprijs</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Verkoopprijs</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Marge</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 no-print">Selectie</th>
+                  </tr>
+                </thead>
+                <tbody id="BodyRows">
+                  <!-- Totaal -->
+                  <tr id="total">
+                    <td>
+                      <div class="d-flex px-2 py-1">
+                        <div>
+                          <img src="/static/assets/img/total.png" class="avatar avatar-sm me-3">
+                          <input type="hidden" name="links" value="/static/assets/img/total.png">
+                        </div>
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 class="mb-0 text-sm">TOTAAL</h6>
+                          <input type="hidden" name="names" value="TOTAAL">
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <a class="text-s font-weight-bold mb-0"><u>€</u></a>
+                      <u><a class="text-s font-weight-bold mb-0" id="totalin">0,00</a></u>
+                      <input type="hidden" name="buyvalues" value="0.00" id="bv">
+                    </td>
+                    <td class="align-middle text-center">
+                      <a class="text-s font-weight-bold mb-0"><u>€</u></a>
+                      <u><a class="text-s font-weight-bold mb-0" id="totalout">0,00</a></u>
+                      <input type="hidden" name="sellvalues" value="0.00" id="sv">
+                    </td>
+                    <td class="align-middle text-center">
+                      <u><a class="text-s font-weight-bold mb-0" id="totalmargin">0,00</a></u>
+                      <a class="text-s font-weight-bold mb-0"><u>%</u></a>
+                      <input type="hidden" name="marginvalues" value="0.00" id="mv">
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="btn bg-gradient-primary my-1 me-1 no-print" id="savebutton" type="submit">Factuur Opslaan</button>
+    </div>
+    {% include "includes/footer.html" %}
+      </div>
+  </div>
+  </form>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}
+<script src="FileSaver.js"></script>
+  <script type="text/javascript">
+    category_data = {{ category_data|safe }};
+    init(category_data);
+
+    function init(data){
+      document.getElementById("add_category").addEventListener("click", function() {
+        table = document.getElementById("invoicetable")
+        selected = document.getElementById("categories").value;
+
+        for(var i=0; i<data.length; i++){
+          if (data[i].name == selected){
+            add_row(table, data[i].name, data[i].link, data[i].margin)
+          }
+        }
+      });
+    }
+
+    function add_row(table, name, link, margin){
+      var rowCount = table.rows.length;
+      var row = table.insertRow(rowCount-1);
+
+      // first row -------------------------------------
+      var cell1 = row.insertCell(0);
+
+      var elementa = document.createElement("div");
+      elementa.className = "d-flex px-2 py-1";
+      cell1.appendChild(elementa);
+
+      var elementaa = document.createElement("div");
+      elementa.appendChild(elementaa);
+
+      var elementaaa = document.createElement("img");
+      elementaaa.src = link;
+      elementaaa.className = "avatar avatar-sm me-3";
+      elementaa.appendChild(elementaaa);
+
+      var elementaab = document.createElement("input");
+      elementaab.type = "hidden";
+      elementaab.name = "links";
+      elementaab.value = link;
+      elementaa.appendChild(elementaab);
+
+      var elementab = document.createElement("div");
+      elementab.className = "d-flex flex-column justify-content-center"
+      elementa.appendChild(elementab);
+
+      var elementaba = document.createElement("h6");
+      elementaba.className = "mb-0 text-sm";
+      elementab.appendChild(elementaba);
+      var text = document.createTextNode(name);
+      elementaba.appendChild(text);
+
+      var elementabb = document.createElement("input");
+      elementabb.type = "hidden";
+      elementabb.name = "names";
+      elementabb.value = name;
+      elementab.appendChild(elementabb);
+
+      // second row ------------------------------------
+      var cell2 = row.insertCell(1);
+      cell2.id = name;
+
+      var elementa = document.createElement("a");
+      cell2.appendChild(elementa);
+
+      var elementaa = document.createElement("span");
+      elementaa.className = "text-s font-weight-bold mb-0";
+      elementa.appendChild(elementaa);
+
+      var text = document.createTextNode("€ ");
+      elementaa.appendChild(text);
+
+      var elementab = document.createElement("span");
+      elementab.className = "text-s font-weight-bold mb-0 click-me";
+      elementab.contentEditable = "true";
+      elementa.appendChild(elementab);
+      var text = document.createTextNode("0,00");
+      elementab.appendChild(text);
+
+      var elementac = document.createElement("input");
+      elementac.type = "hidden";
+      elementac.name = "buyvalues";
+      elementac.value = "0.00";
+      elementa.appendChild(elementac);
+
+
+      // Third row -------------------------------------
+      var cell3 = row.insertCell(2);
+      cell3.className = "align-middle text-center";
+
+      var elementa = document.createElement("span");
+      elementa.className = "text-s font-weight-bold mb-0";
+      cell3.appendChild(elementa);
+
+      var text = document.createTextNode("€ ");
+      elementa.appendChild(text);
+
+      var elementb = document.createElement("span");
+      elementb.className = "text-s font-weight-bold mb-0";
+      cell3.appendChild(elementb);
+      var text = document.createTextNode("0,00");
+      elementb.appendChild(text);
+
+      var elementc = document.createElement("input");
+      elementc.type = "hidden";
+      elementc.name = "sellvalues";
+      elementc.value = "0.00";
+      cell3.appendChild(elementc);
+
+      // Fourth row -------------------------------------
+      var cell4 = row.insertCell(3);
+      cell4.className = "align-middle text-center";
+
+      var elementa = document.createElement("span");
+      elementa.className = "text-s font-weight-bold mb-0";
+      cell4.appendChild(elementa);
+
+      var text = document.createTextNode(margin);
+      elementa.appendChild(text);
+
+      var elementb = document.createElement("span");
+      elementb.className = "text-s font-weight-bold mb-0";
+      cell4.appendChild(elementb);
+
+      var text = document.createTextNode("%");
+      elementb.appendChild(text);
+
+      var elementc = document.createElement("input");
+      elementc.type = "hidden";
+      elementc.name = "marginvalues";
+      elementc.value = margin;
+      cell4.appendChild(elementc);
+
+      // Fifth row --------------------------------------
+      var cell5 = row.insertCell(4);
+      cell5.className = "align-middle text-center text-sm no-print";
+
+      var elementa = document.createElement("button");
+      elementa.type = "button";
+      elementa.className = "badge badge-sm bg-gradient-success";
+      elementa.setAttribute('onclick',"deleteRow(event)")
+      cell5.appendChild(elementa);
+
+      var text = document.createTextNode("Verwijder");
+      elementa.appendChild(text);
+
+    }
+
+    function deleteRow(event){
+      console.log(event.target.parentNode.parentNode.remove());
+    }
+  </script>
+
+
+  <script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+      var options = {
+        damping: '0.5'
+      }
+      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+  </script>
+
+  <script>
+    window.addEventListener("load", function() {
+	  listen();
+    });
+
+
+
+    function listen() {
+	document.addEventListener('input', function (event) {
+      if (event.target.matches('.click-me')) {
+          //Change profitcolumn
+          origincell = event.target;
+          targetcell = event.target.parentNode.parentNode.parentNode.children[2].children[1];
+          margincell = event.target.parentNode.parentNode.parentNode.children[3].children[0];
+          targetcell.textContent = format(deformat(origincell.textContent)*(1+deformat(margincell.textContent)/100));
+
+
+          //Change total
+          totalin = document.getElementById("totalin");
+          totalout = document.getElementById("totalout");
+          totalmarge = document.getElementById("totalmargin");
+          rows = event.target.parentNode.parentNode.parentNode.parentNode.children;
+          console.log(rows)
+          var insum=0;
+          var outsum = 0;
+          for(var i = 0; i<rows.length-1;i++){
+            insum += deformat(rows[i].children[1].children[0].children[1].textContent);
+            outsum += deformat(rows[i].children[2].children[1].textContent);
+          }
+          totalin.textContent = format(insum);
+          totalout.textContent = format(outsum);
+          totalmargin.textContent = format(((outsum/insum)-1)*100);
+
+
+          //Change the row input values
+          columns = event.target.parentNode.parentNode.parentNode.childNodes;
+          columns[1].childNodes[0].childNodes[2].value = deformat(columns[1].childNodes[0].childNodes[1].textContent);
+          columns[2].childNodes[2].value = deformat(columns[2].childNodes[1].textContent);
+
+          //Change the totals input values
+          document.getElementById("bv").value = deformat(document.getElementById("totalin").textContent);
+          document.getElementById("sv").value = deformat(document.getElementById("totalout").textContent);
+          document.getElementById("mv").value = deformat(document.getElementById("totalmargin").textContent);
+      }
+    }, false);
+   }
+
+   function deformat(number){
+    return parseFloat(number.replace(",","."));
+   }
+
+   function format(number){
+    step1 = (Math.round(number * 100) / 100).toFixed(2);
+    step2 = step1.toString().replace(".",",");
+    return step2;
+   }
+  </script>
+
+
+{% endblock javascripts %}

@@ -1,72 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="f2f3a4db-5832-4326-b821-de4d7d5e68de" name="Default Changelist" comment="" />
+    <list default="true" id="ee822ec6-85fb-489b-b89c-73aab4c44919" name="Default Changelist" comment="v">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/app_extras.py" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="HTML File" />
-        <option value="Python Script" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitSEFilterConfiguration">
-    <file-type-list>
-      <filtered-out-file-type name="LOCAL_BRANCH" />
-      <filtered-out-file-type name="REMOTE_BRANCH" />
-      <filtered-out-file-type name="TAG" />
-      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
-    </file-type-list>
-  </component>
-  <component name="ProjectId" id="1wFxFsSYKUFA7NfNVuuJPwkX7Ou" />
+  <component name="ProjectId" id="1zGVo79jF7LDiAKISWxOurLb221" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="run.code.analysis.last.selected.profile" value="aDefault" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.project" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\DellXPS15-9500\Desktop\dlls\core\templates" />
-      <recent name="C:\Users\DellXPS15-9500\Desktop\dlls\core\static\assets\css" />
-      <recent name="C:\Users\DellXPS15-9500\Desktop\dlls\core\templates\layouts" />
-      <recent name="C:\Users\DellXPS15-9500\Desktop\dlls\core\templates\accounts" />
-      <recent name="C:\Users\DellXPS15-9500\Desktop\dlls\staticfiles" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\DellXPS15-9500\Desktop\dlls\core\templates\layouts" />
-      <recent name="C:\Users\DellXPS15-9500\Desktop\dlls\core\templates" />
-      <recent name="C:\Users\DellXPS15-9500\Desktop\dlls\core\static\assets\img" />
+      <recent name="C:\Users\Jeroen\PycharmProjects\StoreManagementV1.0" />
     </key>
   </component>
   <component name="RunManager">
     <configuration name="manage" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="dlls" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="C:\Users\DellXPS15-9500\Desktop\dlls\venv\Scripts\python.exe" />
+      <option name="SDK_HOME" value="C:\Users\Jeroen\AppData\Local\Programs\Python\Python39\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage.py" />
       <option name="PARAMETERS" value="runserver" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -82,34 +77,33 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f2f3a4db-5832-4326-b821-de4d7d5e68de" name="Default Changelist" comment="" />
-      <created>1628068036894</created>
+      <changelist id="ee822ec6-85fb-489b-b89c-73aab4c44919" name="Default Changelist" comment="" />
+      <created>1633774583855</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1628068036894</updated>
+      <updated>1633774583855</updated>
     </task>
-    <task id="LOCAL-00001" summary="Store Management V1.0">
-      <created>1633773983348</created>
+    <task id="LOCAL-00001" summary="v">
+      <created>1633869373438</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1633773983348</updated>
+      <updated>1633869373438</updated>
     </task>
-    <task id="LOCAL-00002" summary="Revert &quot;Store Management V1.0&quot;&#10;&#10;This reverts commit b94a84212d307f060349a7c94023ae5d599392f5.">
-      <created>1633775247383</created>
+    <task id="LOCAL-00002" summary="v">
+      <created>1633890160576</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1633775247383</updated>
+      <updated>1633890160576</updated>
     </task>
     <option name="localTasksCounter" value="3" />
     <servers />
-  </component>
-  <component name="UnknownFeatures">
-    <option featureType="com.intellij.fileTypeFactory" implementationName="*.css" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -127,16 +121,21 @@
                       </list>
                     </value>
                   </entry>
-                  <entry key="roots">
+                  <entry key="structure">
                     <value>
                       <list>
-                        <option value="$PROJECT_DIR$" />
+                        <option value="dir:C:/Users/Jeroen/PycharmProjects/StoreManagementV1.0/app" />
                       </list>
                     </value>
                   </entry>
                 </map>
               </option>
             </State>
+          </value>
+        </entry>
+        <entry key="MAIN">
+          <value>
+            <State />
           </value>
         </entry>
       </map>
@@ -149,8 +148,76 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Store Management V1.0" />
-    <MESSAGE value="Revert &quot;Store Management V1.0&quot;&#10;&#10;This reverts commit b94a84212d307f060349a7c94023ae5d599392f5." />
-    <option name="LAST_COMMIT_MESSAGE" value="Revert &quot;Store Management V1.0&quot;&#10;&#10;This reverts commit b94a84212d307f060349a7c94023ae5d599392f5." />
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
+    <MESSAGE value="v" />
+    <option name="LAST_COMMIT_MESSAGE" value="v" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="989" y="295" key="#manage" timestamp="1633774634337">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="989" y="295" key="#manage/0.0.2560.1400@0.0.2560.1400" timestamp="1633774634337" />
+    <state x="93" y="100" width="1410" height="1207" key="DiffContextDialog" timestamp="1634203681698">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="93" y="100" width="1410" height="1207" key="DiffContextDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1634203681698" />
+    <state x="578" y="458" key="FileChooserDialogImpl" timestamp="1634203567171">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="578" y="458" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1634203567171" />
+    <state width="1572" height="401" key="GridCell.Tab.0.bottom" timestamp="1633892835802">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1572" height="401" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1633892835802" />
+    <state width="1572" height="401" key="GridCell.Tab.0.center" timestamp="1633892835802">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1572" height="401" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1633892835802" />
+    <state width="1572" height="401" key="GridCell.Tab.0.left" timestamp="1633892835802">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1572" height="401" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1633892835802" />
+    <state width="1572" height="401" key="GridCell.Tab.0.right" timestamp="1633892835802">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1572" height="401" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1633892835802" />
+    <state x="1396" y="406" key="SettingsEditor" timestamp="1634203307801">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1396" y="406" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1634203307801" />
+    <state x="390" y="436" key="Vcs.Push.Dialog.v2" timestamp="1633890296347">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="390" y="436" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1633890296347" />
+    <state x="544" y="437" key="VcsDiffUtil.ChangesDialog" timestamp="1633890233887">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="544" y="437" key="VcsDiffUtil.ChangesDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1633890233887" />
+    <state x="-106" y="533" width="2376" height="1216" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1634203681698">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="-106" y="533" width="2376" height="1216" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1634203681698" />
+    <state x="987" y="302" width="585" height="795" key="find.popup" timestamp="1634203018049">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="987" y="302" width="585" height="795" key="find.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1634203018049" />
+    <state x="548" y="492" key="git4idea.merge.GitMergeDialog" timestamp="1634202447448">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="548" y="492" key="git4idea.merge.GitMergeDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1634202447448" />
+    <state x="476" y="492" key="git4idea.merge.GitPullDialog" timestamp="1633890333824">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="476" y="492" key="git4idea.merge.GitPullDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1633890333824" />
+    <state x="576" y="565" key="git4idea.rebase.GitRebaseDialog" timestamp="1634203141752">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="576" y="565" key="git4idea.rebase.GitRebaseDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1634203141752" />
+    <state x="1110" y="491" key="svn.repositoryBrowser" timestamp="1634203468770">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1110" y="491" key="svn.repositoryBrowser/0.0.2560.1400@0.0.2560.1400" timestamp="1634203468770" />
   </component>
 </project>

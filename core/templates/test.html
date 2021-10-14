@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+{% extends 'layouts/base.html' %}
+
+{% block title %} UI Tables {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+<head>
+<title>Testpage</title>
+</head>
+<body>
+
+<h1>This is a test page</h1>
+<input type="text" value="{{request.user}}">
+
+<p>
+    {{title}}
+    {{number|add:1}}
+    {{list}}
+</p>
+
+For loop in html:
+<ul>
+{% for item in list %}
+<li> {{item}}</li>
+{% endfor%}
+</ul>
+
+<p>
+    if/else in html:
+</p>
+<ul>
+    {% if title == "Titelpagina" %}
+    <li>correct</li>
+    {% elif title == "wow" %}
+    <li>wow!</li>
+    {% else %}
+    <li>false</li>
+    {% endif %}
+
+
+</ul>
+
+{% block content %}
+<div class="container-fluid py-4">
+    <div class="row mt-4">
+      <div class="col-12">
+        <div class="card mb-4">
+          <div class="card-body px-0 pt-0 pb-2">
+            <div class="table-responsive p-0">
+              <table class="table align-items-center mb-0" id="invoicetable">
+                <thead>
+                  <tr>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Productcategorie</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Aankoopprijs</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Verkoopprijs</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Marge</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Selectie</th>
+                  </tr>
+                </thead>
+                <tbody id="BodyRows">
+                    {% for category in categories %}
+                    <tr>
+                        <td>
+                            <div class="d-flex px-2 py-1">
+                                <div>
+                                    <img src="{{category.image_link}}"class="avatar avatar-sm me-3">
+                                </div>
+                                <div class="d-flex flex-column justify-content-center">
+                                    <h6 class="mb-0 text-sm">{{category.name}}</h6>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                  <!-- Totaal -->
+                  <tr>
+                    <td>
+                      <div class="d-flex px-2 py-1">
+                        <div>
+                          <img src="/static/assets/img/total.png" class="avatar avatar-sm me-3">
+                        </div>
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 class="mb-0 text-sm">TOTAAL</h6>
+                        </div>
+                      </div>
+                      <input type="hidden" name="name[]" value="TOTAAL">
+                    </td>
+                    <td>
+                      <a class="text-s font-weight-bold mb-0"><u>€</u></a>
+                      <u><a class="text-s font-weight-bold mb-0" id="totalin">0,00</a></u>
+                      <input type="hidden" name="buyprice[]" value="0.00">
+                    </td>
+                    <td class="align-middle text-center">
+                      <a class="text-s font-weight-bold mb-0"><u>€</u></a>
+                      <u><a class="text-s font-weight-bold mb-0" id="totalout">0,00</a></u>
+                      <input type="hidden" name="sellprice[]" value="0.00">
+                    </td>
+                    <td class="align-middle text-center">
+                      <u><a class="text-s font-weight-bold mb-0" id="totalmargin">0,00</a></u>
+                      <a class="text-s font-weight-bold mb-0"><u>%</u></a>
+                      <input type="hidden" name="margin[]" value="0.00">
+                    </td>
+                  </tr>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="btn bg-gradient-primary my-1 me-1" id="savebutton" onclick="submit()" type="submit">Factuur Opslaan</button>
+    </div>
+</div>
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    {{ object.name }}
+    <table>
+    {% for item in objectlist %}
+        <p>Do you want to delete category "{{item.name}}"?</p>
+        <p>{{ item.get_absolute_url }}</p>
+        <p><button type="submit" value="item">Delete</button>  <button><a href="{{ item.get_absolute_url }}">Cancel</a></button></p>
+    {% endfor %}
+    </table>
+</form>
+{% endblock content %}
+
+
+</body>
+
+  <script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+      var options = {
+        damping: '0.5'
+      }
+      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+  </script>
+</html>
